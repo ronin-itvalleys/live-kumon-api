@@ -30,8 +30,8 @@ app.post("/customer/registerCustomer", (req, res) => {
     });
 });
 
-app.get("/customer/details", (req, res) => {
-  CustomerModel.findById(res.body._id)
+app.post("/customer/details", (req, res) => {
+  CustomerModel.findById(res.body.id)
     .exec()
     .then((doc) => {
       if (doc != null) {
@@ -46,8 +46,8 @@ app.get("/customer/details", (req, res) => {
     });
 });
 
-app.get("/customer/updateCustomer", (req, res) => {
-  CustomerModel.findByIdAndUpdate(res.body._id, res.body, (err) => {
+app.post("/customer/updateCustomer", (req, res) => {
+  CustomerModel.findByIdAndUpdate(res.body.id, res.body, (err) => {
     res.send(400);
   })
     .then((res) => {
